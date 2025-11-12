@@ -1,0 +1,2 @@
+# LearnJavascript
+Tempatku kenal javascript
