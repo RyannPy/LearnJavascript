@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Game Kotak Gerak (HP)</title>
+        <style>
+            body {
+                margin: 0;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background: radial-gradient(circle at center, #111, #000);
+                font-family: sans-serif;
+                color: white;
+            }
+
+            #arena {
+                width: 300px;
+                height: 300px;
+                border: 3px solid #0ff;
+                position: relative;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 10px;
+            }
+
+            #player {
+                width: 40px;
+                height: 40px;
+                background: #0ff;
+                position: absolute;
+                left: 130px;
+                top: 130px;
+                border-radius: 8px;
+                transition: 0.1s;
+            }
+
+            .controls {
+                margin-top: 20px;
+                display: grid;
+                grid-template-columns: 60px 60px 60px;
+                grid-template-rows: 60px 60px 60px;
+                gap: 8px;
+                justify-content: center;
+                align-items: center;
+            }
+
+            button {
+                width: 60px;
+                height: 60px;
+                border: none;
+                border-radius: 10px;
+                background: #0ff2;
+                color: #0ff;
+                font-size: 20px;
+                font-weight: bold;
+                transition: 0.1s;
+            }
+
+            button:active {
+                background: #0ff8;
+                transform: scale(0.95);
+            }
+
+            .empty {
+                background: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="arena">
+            <div id="player"></div>
+        </div>
+
+        <div class="controls">
+            <div class="empty"></div>
+            <button id="up">▲</button>
+            <div class="empty"></div>
+            <button id="left">◀</button>
+            <div class="empty"></div>
+            <button id="right">▶</button>
+            <div class="empty"></div>
+            <button id="down">▼</button>
+            <div class="empty"></div>
+        </div>
+
+        <script>
+            const player = document.getElementById("player");
+            let x = 130;
+            let y = 130;
+            const speed = 10;
+
+            function updatePosition() {
+                x = Math.max(0, Math.min(260, x));
+                y = Math.max(0, Math.min(260, y));
+                player.style.left = x + "px";
+                player.style.top = y + "px";
+            }
+
+            document.getElementById("up").onclick = () => {
+                y -= speed;
+                updatePosition();
+            };
+            document.getElementById("down").onclick = () => {
+                y += speed;
+                updatePosition();
+            };
+            document.getElementById("left").onclick = () => {
+                x -= speed;
+                updatePosition();
+            };
+            document.getElementById("right").onclick = () => {
+                x += speed;
+                updatePosition();
+            };
+        </script>
+    </body>
+</html>

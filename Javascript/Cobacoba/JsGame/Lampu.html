@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Change the Theme!</title>
+    </head>
+
+    <style>
+        #body {
+            background-color: #1a1a2e;
+            font-family: "Poppins", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        /* Gaya Tombol */
+        .button {
+            background: linear-gradient(45deg, #00fffb, #0087ff);
+            border: none;
+            border-radius: 10px;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #fff;
+            cursor: pointer;
+            position: relative;
+            outline: none;
+            box-shadow:
+                0 0 15px rgba(0, 255, 251, 0.6),
+                0 0 30px rgba(0, 135, 255, 0.4);
+            text-shadow:
+                0 0 5px #fff,
+                0 0 10px #00fffb;
+            transition: all 0.3s ease;
+        }
+
+        /* ✨ Efek Hover */
+        .button:hover {
+            background: linear-gradient(
+                45deg,
+                #0087ff,
+                #00fffb
+            ); /* tukar arah gradasi */
+            transform: scale(1.08); /* sedikit membesar */
+            box-shadow:
+                0 0 25px rgba(0, 255, 251, 0.8),
+                0 0 50px rgba(0, 135, 255, 0.6),
+                0 0 80px rgba(0, 255, 251, 0.5); /* efek cahaya lebih intens */
+        }
+
+        /* ✨ Efek Saat Ditekan */
+        .button:active {
+            transform: scale(0.95); /* sedikit mengecil pas diklik */
+            box-shadow:
+                0 0 10px rgba(0, 255, 251, 0.5),
+                0 0 20px rgba(0, 135, 255, 0.3);
+        }
+    </style>
+    <body id="body">
+        <div class="container">
+            <button type="submit" class="button" id="button">CHANGE</button>
+        </div>
+    </body>
+    <script>
+        const body = document.getElementById("body");
+
+        function ubahTema() {
+            const currentColor = getComputedStyle(body).backgroundColor;
+
+            if (currentColor === "rgb(26, 26, 46)") {
+                // itu versi RGB dari #1a1a2e
+                body.style.backgroundColor = "#fff";
+            } else {
+                body.style.backgroundColor = "#1a1a2e";
+            }
+        }
+
+        document.getElementById("button").onclick = ubahTema;
+    </script>
+</html>
